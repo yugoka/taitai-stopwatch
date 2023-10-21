@@ -15,13 +15,19 @@ const config: Config = {
       },
     },
     colors: {
-      "time-color": "#0af",
+      primary: "#0af",
+      secondary: "#3b82f6",
+      "secondary-dark-1": "#2563eb",
+      "secondary-dark-2": "#1d4ed8",
+      white: "#ffffff",
+      slate: "#f1f5f9",
     },
     fontSize: {
-      "time-size-lg": "11vw",
-      "time-size-sm": "7.7vw",
-      "time-size-lg-fixed": "3rem",
-      "time-size-sm-fixed": "2.1rem",
+      base: "1rem",
+      "time-lg": "11vw",
+      "time-sm": "7.7vw",
+      "time-lg-fixed": "3rem",
+      "time-sm-fixed": "2.1rem",
     },
     fontFamily: {
       body: [
