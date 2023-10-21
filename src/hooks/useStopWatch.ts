@@ -1,25 +1,33 @@
 import { FormattedTime } from "@/app/types/time";
 import React from "react";
 
-const format = (time: number): FormattedTime => {
+const format = (
+  time: number,
+  options: { showHours: boolean; showMilliseconds: boolean }
+): FormattedTime => {
+  const { showHours, showMilliseconds } = options;
+
   const seconds = Math.floor(time / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
   const ms = Math.floor(time % 1000);
 
   return {
-    hours,
-    minutes: minutes % 60,
+    hours: showHours ? hours : undefined,
+    minutes: showHours ? minutes % 60 : minutes,
     seconds: seconds % 60,
-    ms,
+    ms: showMilliseconds ? ms : undefined,
   };
 };
 
 export const useStopWatch = () => {
-  const [time, setTime] = React.useState(0);
-  const [isRunning, setIsRunning] = React.useState(false);
+  const [time, setTime] = React.useState<number>(0);
   const [startTime, setStartTime] = React.useState<number>(0);
   const [stopTime, setStopTime] = React.useState<number>(0);
+  const [isRunning, setIsRunning] = React.useState<boolean>(false);
+  const [showHours, setShowHours] = React.useState<boolean>(false);
+  const [showMilliseconds, setShowMilliseconds] =
+    React.useState<boolean>(false);
 
   const interval = React.useRef<ReturnType<typeof setInterval>>();
 
@@ -60,6 +68,10 @@ export const useStopWatch = () => {
     reset,
     isRunning,
     time,
-    formattedTime: format(time),
+    formattedTime: format(time, { showHours, showMilliseconds }),
+    showHours,
+    setShowHours,
+    showMilliseconds,
+    setShowMilliseconds,
   };
 };

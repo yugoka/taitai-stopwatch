@@ -6,7 +6,7 @@ export default function ResetButton({ onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className={`mx-2 md:mx-3 border bg-secondary hover:bg-secondary-dark-1 active:bg-secondary-dark-2 text-white font-bold py-1.5 px-2 md:py-2 md:px-4 rounded transition-all ease-in-out`}
+      className={`mx-2 md:mx-3 border bg-secondary border-secondary hover:bg-secondary-dark-1 active:bg-secondary-dark-2 text-white font-bold py-1 px-1.5 md:py-2 md:px-4 text-sm md:text-base rounded transition-all ease-in-out`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

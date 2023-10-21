@@ -1,6 +1,6 @@
 export type FormattedTime = {
-  hours: number;
+  hours?: number;
   minutes: number;
   seconds: number;
-  ms: number;
+  ms?: number;
 };

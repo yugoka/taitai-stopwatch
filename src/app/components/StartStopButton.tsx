@@ -13,7 +13,7 @@ export default function StartStopButton({ isStarted, onClick }: Props) {
           : "bg-white hover:bg-slate"
       } 
       ${isStarted ? "text-white" : "text-secondary"} 
-      font-bold py-1.5 px-2 md:py-2 md:px-4 rounded transition-all ease-in-out  border-secondary
+      font-bold py-1 px-1.5 md:py-2 md:px-4 text-sm md:text-base rounded transition-all ease-in-out  border-secondary
       `}
     >
       <svg

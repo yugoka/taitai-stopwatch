@@ -24,6 +24,7 @@ const config: Config = {
     },
     fontSize: {
       base: "1rem",
+      sm: "0.875rem",
       "time-lg": "11vw",
       "time-sm": "7.7vw",
       "time-lg-fixed": "3rem",
