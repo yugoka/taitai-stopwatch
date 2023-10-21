@@ -15,7 +15,25 @@ const config: Config = {
       },
     },
     colors: {
-      "time-text": "#0af",
+      "time-color": "#0af",
+    },
+    fontSize: {
+      "time-size-lg": "11vw",
+      "time-size-sm": "7.7vw",
+      "time-size-lg-fixed": "3rem",
+      "time-size-sm-fixed": "2.1rem",
+    },
+    fontFamily: {
+      body: [
+        "ヒラギノ角ゴ Pro W3",
+        "Hiragino Kaku Gothic Pro",
+        "メイリオ",
+        "Meiryo",
+        "Osaka",
+        "ＭＳ Ｐゴシック",
+        "MS PGothic",
+        "sans-serif",
+      ],
     },
   },
   plugins: [],
