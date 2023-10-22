@@ -42,6 +42,13 @@ export default function StopWatch() {
           label="ミリ秒を表示"
         />
       </div>
+      <div
+        className={`text-center text-sm mt-2 text-slate-dark transition-all ${
+          stopWatch.isRunning ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        数字をクリックすると時間を編集できます
+      </div>
     </div>
   );
 }

@@ -21,14 +21,16 @@ const config: Config = {
       "secondary-dark-2": "#1d4ed8",
       white: "#ffffff",
       slate: "#f1f5f9",
+      "slate-dark": "#cbd5e1",
     },
     fontSize: {
       base: "1rem",
       sm: "0.875rem",
       "time-lg": "11vw",
       "time-sm": "7.7vw",
-      "time-lg-fixed": "3rem",
-      "time-sm-fixed": "2.1rem",
+      "time-fixed": "4rem",
+      "time-fixed-sm": "3rem",
+      "time-fixed-ms": "2.1rem",
     },
     fontFamily: {
       body: [

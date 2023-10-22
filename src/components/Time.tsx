@@ -20,7 +20,13 @@ export default function Time({ currentTime, isRunning, onUpdate }: Props) {
 
   return (
     <div className="text-primary text-center">
-      <span className="text-time-lg-fixed md:text-time-lg transition-all duration-200 ease-in-out">
+      <span
+        className={` ${
+          currentTime.ms === undefined
+            ? "text-time-fixed"
+            : "text-time-fixed-sm"
+        } md:text-time-lg transition-all duration-200 ease-in-out`}
+      >
         {currentTime.hours != undefined && (
           <>
             <TimeDigit
@@ -49,7 +55,7 @@ export default function Time({ currentTime, isRunning, onUpdate }: Props) {
       </span>
 
       {currentTime.ms != undefined && (
-        <span className="text-time-sm-fixed md:text-time-sm transition-all duration-200 ease-in-out">
+        <span className="text-time-fixed-ms md:text-time-sm transition-all duration-200 ease-in-out">
           <TimeDigit
             isRunning={isRunning}
             onChange={(digit) => handleChange(digit, "ms")}
