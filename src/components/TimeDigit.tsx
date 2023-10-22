@@ -42,9 +42,11 @@ export default function TimeDigit({
     setIsEditMode(false);
 
     const inputDigitInt = parseInt(inputDigit);
-    if (!Number.isNaN(inputDigitInt) && inputDigitInt >= 0) {
+    if (inputDigit.match(/^\d*$/) && inputDigitInt >= 0) {
       onChange(inputDigitInt);
       setInputDigit(getDigitText(inputDigitInt));
+    } else {
+      setInputDigit(getDigitText(digit));
     }
   };
 
@@ -53,7 +55,7 @@ export default function TimeDigit({
       <input
         id={inputID}
         ref={input}
-        type="string"
+        type="number"
         className={isEditMode ? `text-center` : `w-0 h-0 opacity-0`}
         style={{
           // マジックナンバー消したい。。
