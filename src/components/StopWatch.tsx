@@ -43,7 +43,7 @@ export default function StopWatch() {
         />
       </div>
       <div
-        className={`text-center text-sm mt-2 text-slate-dark transition-all ${
+        className={`text-center text-sm mt-2 md:mt-4 text-slate-dark transition-all ${
           stopWatch.isRunning ? "opacity-0" : "opacity-100"
         }`}
       >
