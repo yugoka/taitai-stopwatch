@@ -30,7 +30,7 @@ export default function TimeDigit({
   }, [digit]);
 
   const startEditMode = () => {
-    if (!isRunning) {
+    if (!isRunning && !isEditMode) {
       setIsEditMode(true);
       if (input.current) {
         input.current.focus();
@@ -56,13 +56,18 @@ export default function TimeDigit({
         id={inputID}
         ref={input}
         type="number"
-        className={isEditMode ? `text-center` : `w-0 h-0 opacity-0`}
+        className={
+          isEditMode
+            ? `text-center`
+            : `w-0 h-0 opacity-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`
+        }
         style={{
           // マジックナンバー消したい。。
           width: `${isEditMode ? "max(17vw, 5.5rem)" : 0}`,
         }}
         value={inputDigit}
         onChange={(e) => setInputDigit(e.target.value)}
+        onFocus={startEditMode}
         onBlur={endEditMode}
         onKeyDown={(e) => e.key === "Enter" && endEditMode()}
       />
