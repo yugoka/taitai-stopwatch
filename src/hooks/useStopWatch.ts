@@ -1,4 +1,4 @@
-import { FormattedTime } from "@/app/types/time";
+import { FormattedTime } from "@/types/time";
 import React from "react";
 
 const format = (
@@ -18,6 +18,28 @@ const format = (
     seconds: seconds % 60,
     ms: showMilliseconds ? ms : undefined,
   };
+};
+
+const timeObjectToNumber = (formattedTime: FormattedTime): number => {
+  const ms = 1;
+  const second = ms * 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+
+  let result = 0;
+  if (formattedTime.hours) {
+    result += hour * formattedTime.hours;
+  }
+  if (formattedTime.minutes) {
+    result += minute * formattedTime.minutes;
+  }
+  if (formattedTime.seconds) {
+    result += second * formattedTime.seconds;
+  }
+  if (formattedTime.ms) {
+    result += ms * formattedTime.ms;
+  }
+  return result;
 };
 
 export const useStopWatch = () => {
@@ -55,6 +77,14 @@ export const useStopWatch = () => {
     setStopTime(time);
   };
 
+  const update = (formattedTime: FormattedTime) => {
+    if (!isRunning) {
+      const updatedTime = timeObjectToNumber(formattedTime);
+      setStopTime(updatedTime);
+      setTime(updatedTime);
+    }
+  };
+
   const reset = () => {
     setStartTime(0);
     setStopTime(0);
@@ -66,6 +96,7 @@ export const useStopWatch = () => {
     start,
     stop,
     reset,
+    update,
     isRunning,
     time,
     formattedTime: format(time, { showHours, showMilliseconds }),

@@ -3,9 +3,17 @@ type Props = {
   digit: number;
   pad?: number;
   inputID: string;
+  onChange: (inputDigit: number) => void;
+  isRunning: boolean;
 };
 
-export default function TimeDigit({ digit, inputID, pad = 2 }: Props) {
+export default function TimeDigit({
+  digit,
+  inputID,
+  pad = 2,
+  onChange,
+  isRunning,
+}: Props) {
   const getDigitText = (digit: number): string => {
     return String(digit).padStart(pad, "0");
   };
@@ -22,14 +30,22 @@ export default function TimeDigit({ digit, inputID, pad = 2 }: Props) {
   }, [digit]);
 
   const startEditMode = () => {
-    setIsEditMode(true);
-    if (input.current) {
-      input.current.focus();
+    if (!isRunning) {
+      setIsEditMode(true);
+      if (input.current) {
+        input.current.focus();
+      }
     }
   };
 
   const endEditMode = () => {
     setIsEditMode(false);
+
+    const inputDigitInt = parseInt(inputDigit);
+    if (!Number.isNaN(inputDigitInt) && inputDigitInt >= 0) {
+      onChange(inputDigitInt);
+      setInputDigit(getDigitText(digit));
+    }
   };
 
   return (
@@ -49,7 +65,14 @@ export default function TimeDigit({ digit, inputID, pad = 2 }: Props) {
         onKeyDown={(e) => e.key === "Enter" && endEditMode()}
       />
 
-      {!isEditMode && <a onClick={startEditMode}>{inputDigit}</a>}
+      {!isEditMode && (
+        <a
+          onClick={startEditMode}
+          className={`${isRunning && "cursor-default"}`}
+        >
+          {inputDigit}
+        </a>
+      )}
     </>
   );
 }
